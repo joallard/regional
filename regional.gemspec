@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jonathan@allard.io"]
   spec.description   = %q{Regional allows defining regions and testing what's inside it.}
   spec.summary       = spec.description
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/joallard/regional"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
