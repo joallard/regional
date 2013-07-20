@@ -37,3 +37,16 @@ Feature: Determine whether postal code is in range
     Given the zone is "*"
     Then H0H 0H0 should be included
     Then T1A 2P4 should be included
+
+  Scenario Outline: Less than perfect input
+    Given the zone is <zone>
+    Then <location> should be included
+
+    Examples:
+      | zone    | location |
+      | J7Z     | j7z 1a1   |
+      | j7z     | j7z 2a2   |
+      | j7x     | J7X 9P3   |
+      | H2x     | h2X 1z7   |
+      | t1r     | t1r-5s2   |
+      | A1B3    | a1b 3r0   |

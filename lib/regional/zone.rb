@@ -4,9 +4,16 @@ module Regional
 
     # Make a zone of included ranges. A value of +nil+ means nowhere.
     # +"*"+ means _everywhere_. Literally _everywhere_.
+    # 
+    # Contrary to postal codes, hyphens are not allowed within bound
+    # text because they separate ranges. (eg. H2X-1 to mean
+    # H2X1A1-H2X9Z9 is not allowed, to allow for H2A-H2B to be
+    # understood)
     def initialize(zone)
       return unless zone
       return @components = ["0".."ZZZZZZ"] if zone == "*"
+
+      zone.upcase!
 
       @components = zone.split(/,\s*/).map do |str| 
         array = str.split("-")
