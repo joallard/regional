@@ -18,9 +18,22 @@ Feature: Understand Canadian postal codes
       | A1A 1AA |
       | 1A1 A1A |
 
-  Scenario: Gibberish
-    When I enter postal code BOB LOBLAW
-    Then it is an error
+  Scenario Outline: Gibberish
+    When I enter postal code <input>
+    Then it's an error
+
+    Examples:
+      | input  |
+      | BOB LOBLAW |
+      | U*FOO      |
+      | foofooo    |
+      | JP1 DDD    |
+      | GGGGgg!    |
+      | ++++       |
+      | Marcel     |
+      | Leboeuf    |
+      | 0          |
+      | J7Y        |
 
   Scenario Outline: Forbidden letters
     When I enter postal code <input>
