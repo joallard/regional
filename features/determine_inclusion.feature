@@ -30,5 +30,10 @@ Feature: Determine whether postal code is in range
 
   Scenario: No range
     Given the zone is ""
+    Then H0H 0H0 should not be included
+    Then V1A 0B3 should not be included
+
+  Scenario: Everywhere
+    Given the zone is "*"
     Then H0H 0H0 should be included
-    Then V1A 0B3 should be included
+    Then T1A 2P4 should be included

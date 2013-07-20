@@ -2,7 +2,12 @@ module Regional
   class Zone
     attr_reader :components
 
+    # Make a zone of included ranges. A value of +nil+ means nowhere.
+    # +"*"+ means _everywhere_. Literally _everywhere_.
     def initialize(zone)
+      return unless zone
+      return @components = ["0".."ZZZZZZ"] if zone == "*"
+
       @components = zone.split(/,\s*/).map do |str| 
         array = str.split("-")
 
@@ -14,8 +19,6 @@ module Regional
           raise ArgumentError, "Range can only have one hyphen"
         end
       end
-
-      @components[0] ||= "0".."ZZZZZZ"
     end
 
     def cover?(area)
